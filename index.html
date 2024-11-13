@@ -11,19 +11,7 @@
 </html>
 <body>
 
-    var router = require('express').Router();
-const MongoClient = require('mongodb').MongoClient;
-var db;
-const DB_URL = ""
-MongoClient.connect(DB_URL, function(err,client){
-    if(err) return console.log(err);
-    db = client.db('searchcer');
-})
-    app.get('/',function(req,res){
-db.collection('post').find().toArray(function(err,rst){
-    res.render('main.ejs', {posts : rst })
-    })
-    router.get('/norboard',function(req,res){
+router.get('/norboard',function(req,res){
     db.collection('post').find({type : "일반"}).toArray(function(err,rst){
         res.render('main.ejs',{posts : rst})
     })
@@ -52,7 +40,3 @@ router.get('/scrtboard',function(req,res){
         res.render('main.ejs',{posts : rst})
     })
 })
-})
-    <span><%= posts[i].date%> | </span>
-  
-
