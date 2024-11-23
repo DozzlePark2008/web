@@ -11,3 +11,11 @@
 </html>
 <body>
 
+var router = require('express').Router();
+const MongoClient = require('mongodb').MongoClient;
+var db;
+const DB_URL = ""
+MongoClient.connect(DB_URL, function(err,client){
+    if(err) return console.log(err);
+    db = client.db('searchcer');
+})
